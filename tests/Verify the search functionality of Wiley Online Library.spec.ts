@@ -12,7 +12,7 @@ const SEARCH_RESULT_TEXT2 = '//span[@class=\'result__sep\']\n'
 const SEARCH_RESULT_TEXT3 = '//span[@class=\'result__suffix\']\n'
 const PRODUCT_TITLE = '//span[@class=\'hlFld-Title\']'
 
-  test('Verify the search functionality of Wiley Online Library', async ({ page }) => {
+test('Verify the search functionality of Wiley Online Library', async ({ page }) => {
   await page.goto('https://onlinelibrary.wiley.com/');
 
   //verify the title
