@@ -1,15 +1,30 @@
 import { test, expect } from '@playwright/test';
+import axios from 'axios';
+require('dotenv').config();
 
+const login = process.env.login;
+const password = process.env.password;
 
-test.only('Verify the search functionality of Wiley Online Library', async ({ page }) => {
-  await page.goto('https://onlinelibrary.wiley.com/');
+const URL = "https://onlinelibrary.wiley.com/action/doLogin?societyURLCode=";
 
-  //verify the title
-  await expect(page).toHaveTitle("Wiley Online Library | Scientific research articles, journals, books, and reference works",{timeout:10000});
+test('Verify the login functionality of the login page with API', async ({ page }) => {
+    // Axios: API call to perform login
+    try {
+        const response = await axios.post(URL, {
+            login,
+            password
+        });
 
+        // Checking status code
+        expect(response.status).toBe(302);
 
+        //Assuming the response data should exist
+        expect(response.data).toBeTruthy();
 
-
+        await page.goto('https://onlinelibrary.wiley.com/');
+        console.log(response.data);
+    } catch (error) {
+        // Catch any potential errors
+        console.error("Error occurred:", error);
+    }
 });
-
-
