@@ -36,5 +36,3 @@ test('Verify the accessibility of search page Wiley Online Library', async ({ pa
     expect(accessibilityScanResults.violations).toEqual([]);
 
 });
-
-
