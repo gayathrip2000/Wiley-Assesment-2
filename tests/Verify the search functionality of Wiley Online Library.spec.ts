@@ -19,7 +19,7 @@ test('Verify the search functionality of Wiley Online Library', async ({ page })
   await expect(page).toHaveTitle("Wiley Online Library | Scientific research articles, journals, books, and reference works", { timeout: 10000 });
 
   // Input the book ISBN in the search box
-  await page.locator(SEARCH_BOX_INPUT).type(BOOK_ISBN);
+  await page.locator(SEARCH_BOX_INPUT).pressSequentially(BOOK_ISBN);
   await page.keyboard.press('Enter');
   test.slow();
   await expect(page.locator(SEARCH_RESULT_TEXT1)).toHaveText(`1`,{ timeout: 20000 });
