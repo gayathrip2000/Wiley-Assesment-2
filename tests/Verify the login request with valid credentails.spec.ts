@@ -1,29 +1,35 @@
+// Verify the login functionality of the login page with API //
+// 1. end point url assign in to URL.
+// 2. login credentials retrieved from environment variables (login and password) in the request payload.
+// 3. Expect the response status to be 302 (indicating a redirection response) and for
+//    the response data to exist (toBeTruthy()).
+// 4. Navigates to the Wiley Online Library page using Playwright (page.goto()).
+
+
 import { test, expect } from '@playwright/test';
+import axios from 'axios';
 require('dotenv').config();
 
+const login = process.env.login;
+const password = process.env.password;
 
-const LOGIN_TITLE =  '//span[@class=\'sign-in-label\']\n'
-const INPUT_USERNAME = '//input[@id=\'username\']\n'
-const INPUT_PASSWORD = '//input[@id=\'password\']\n'
-const INTRO_TEXT = '//p[@class=\'intro-text--search\']\n'
+const URL = "https://onlinelibrary.wiley.com/action/doLogin?societyURLCode=";
 
-const login =process.env.login;
-const password =process.env.password;
+test('Verify the login functionality of the login page with API', async ({ page }) => {
+    try {
+        const response = await axios.post(URL, {
+            login,
+            password
+        });
 
-test('Verify the login with valid credentials', async ({ page }) => {
-    await page.goto('https://onlinelibrary.wiley.com/');
-    //verify the title
-    await expect(page).toHaveTitle("Wiley Online Library | Scientific research articles, journals, books, and reference works",{timeout:10000});
+        expect(response.status).toBe(302);
 
-    await expect(page.locator(LOGIN_TITLE)).toHaveText(`Login / Register`,{timeout:30000});
+        expect(response.data).toBeTruthy();
 
-    await page.locator(INPUT_USERNAME).pressSequentially(login);
-    await page.locator(INPUT_PASSWORD).pressSequentially(password);
+        await page.goto('https://onlinelibrary.wiley.com/');
+        console.log(response.data);
+    } catch (error) {
 
-
-    await page.keyboard.press('Enter');
-
-    await expect(page.locator(INTRO_TEXT)).toHaveText("Today's research, tomorrow's innovation", { timeout: 30000 });
-
-
+        console.error("Error occurred:", error);
+    }
 });

@@ -1,6 +1,14 @@
+// Verify the login with valid credentials
+// 1. Navigates to the Wiley Online Library website.
+// 2. Checks if the page title matches the expected title.
+// 3. Checks for the existence of the login/register element on the page.
+// 4. Input the login credentials (username and password) obtained from
+//    environment variables into their respective input fields.
+// 5. Validates an introductory text ("Today's research, tomorrow's innovation") after the login.
+
+
 import { test, expect } from '@playwright/test';
 require('dotenv').config();
-
 
 const LOGIN_TITLE =  '//span[@class=\'sign-in-label\']\n'
 const INPUT_USERNAME = '//input[@id=\'username\']\n'
