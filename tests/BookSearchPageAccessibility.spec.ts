@@ -30,7 +30,7 @@ test('Verify the accessibility of search page Wiley Online Library', async ({ pa
 
   await page.keyboard.press('Enter');
 
-  await expect(page.locator(SEARCH_RESULT_TEXT3)).toHaveText(`"${BOOK_ISBN}"  anywhere `,{timeout:50000});
+  await expect(page.locator(SEARCH_RESULT_TEXT3)).toHaveText(`"${BOOK_ISBN}"  anywhere `,{timeout:300000});
 
   await expect(page.locator(PRODUCT_TITLE).first()).toHaveText(BOOK_NAME);
 

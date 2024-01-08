@@ -24,7 +24,7 @@ const SEARCH_RESULT_TEXT3 = 'span.result__suffix';
 const PRODUCT_TITLE = 'span.hlFld-Title';
 
 
-test.only('Verify the search functionality of Wiley Online Library', async ({ page }) => {
+test('Verify the search functionality of Wiley Online Library', async ({ page }) => {
 
   await page.goto('https://onlinelibrary.wiley.com/', { timeout: 30000 });
 
@@ -44,7 +44,6 @@ test.only('Verify the search functionality of Wiley Online Library', async ({ pa
 
   await page.click(`text=${ABOUT_THIS_BOOK}`,{ timeout: 30000 });
   await page.waitForURL('**/action/doSearch?AllField=9783527610853#');
-
 
 
 });
