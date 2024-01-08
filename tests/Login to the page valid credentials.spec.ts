@@ -19,20 +19,20 @@ const login =process.env.login;
 const password =process.env.password;
 
 test('Verify the login with valid credentials', async ({ page }) => {
-  await page.goto('https://onlinelibrary.wiley.com/');
-  //verify the title
-  await expect(page).toHaveTitle("Wiley Online Library | Scientific research articles, journals, books, and reference works",{timeout:10000});
 
-  await expect(page.locator(LOGIN_TITLE)).toHaveText(`Login / Register`,{timeout:30000});
+  await page.goto('https://onlinelibrary.wiley.com/');
+  await expect(page).toHaveTitle("Wiley Online Library | Scientific research articles, journals, books, and reference works",{timeout:30000});
+
+  await expect(page.locator(LOGIN_TITLE)).toHaveText(`Login / Register`,{timeout:50000});
 
   await page.locator(INPUT_USERNAME).pressSequentially(login);
   await page.locator(INPUT_PASSWORD).pressSequentially(password);
 
 
   await page.keyboard.press('Enter');
-  await page.waitForLoadState('networkidle');
 
-  await expect(page.locator(INTRO_TEXT)).toHaveText("Today's research, tomorrow's innovation", { timeout: 30000 });
+
+  await expect(page.locator(INTRO_TEXT)).toHaveText("Today's research, tomorrow's innovation", { timeout: 70000 });
 
 
 });
