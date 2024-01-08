@@ -11,7 +11,10 @@ To run this project locally, follow the steps below
 
 ### IDE Used
 * WebStorm 2023.3.2
-   
+  
+### Test Autmation Tool
+* Playwright
+     
 ### Prerequisites
 
 1. Node.js and npm should be installed on your machine.
