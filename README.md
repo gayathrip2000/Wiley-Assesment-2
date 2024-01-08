@@ -1,6 +1,8 @@
-# Automated Testing for Wiley Online Library
+# Wiley Online Library(For Automated Testing)
 
-This Automated Testing for Wiley Online Library is done for Assesment 2 using Playwright.
+This is the automated testing for the Wiley online library using Playwright.
+
+![Screenshot 2024-01-08 133020](https://github.com/gayathrip2000/Wiley-Assesment-2/assets/99193625/60be4a67-a043-4ad0-8173-040a1ce4fc48)
 
 
 ## Getting Started
@@ -9,7 +11,10 @@ To run this project locally, follow the steps below
 
 ### IDE Used
 * WebStorm 2023.3.2
-   
+  
+### Test Autmation Tool
+* Playwright
+     
 ### Prerequisites
 
 1. Node.js and npm should be installed on your machine.
