@@ -15,7 +15,7 @@ const password = process.env.password;
 
 const URL = "https://onlinelibrary.wiley.com/action/doLogin?societyURLCode=";
 
-test('Verify the login functionality of the login page with API', async ({ page }) => {
+test('Verify the API login functionality of the login page with', async ({ page }) => {
     try {
         const response = await axios.post(URL, {
             login,
@@ -27,6 +27,7 @@ test('Verify the login functionality of the login page with API', async ({ page 
         expect(response.data).toBeTruthy();
 
         await page.goto('https://onlinelibrary.wiley.com/');
+        await page.waitForLoadState('networkidle');
         console.log(response.data);
     } catch (error) {
 

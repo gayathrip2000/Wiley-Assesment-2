@@ -11,9 +11,9 @@ import { test, expect } from '@playwright/test';
 require('dotenv').config();
 
 const LOGIN_TITLE =  '//span[@class=\'sign-in-label\']\n'
-const INPUT_USERNAME = '//input[@id=\'username\']\n'
-const INPUT_PASSWORD = '//input[@id=\'password\']\n'
-const INTRO_TEXT = '//p[@class=\'intro-text--search\']\n'
+const INPUT_USERNAME = '#username';
+const INPUT_PASSWORD = '#password';
+const INTRO_TEXT = '.intro-text--search';
 
 const login =process.env.login;
 const password =process.env.password;
@@ -30,6 +30,7 @@ test('Verify the login with valid credentials', async ({ page }) => {
 
 
   await page.keyboard.press('Enter');
+  await page.waitForLoadState('networkidle');
 
   await expect(page.locator(INTRO_TEXT)).toHaveText("Today's research, tomorrow's innovation", { timeout: 30000 });
 

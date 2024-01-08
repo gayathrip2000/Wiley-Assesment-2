@@ -16,7 +16,7 @@ import AxeBuilder from "@axe-core/playwright";
 const BOOK_ISBN = "9783527610853";
 const BOOK_NAME = "100 Years Werner Heisenberg"
 
-const SEARCH_BOX_INPUT = '//*[@id="searchField1"]';
+const SEARCH_BOX_INPUT = '#searchField1';
 const SEARCH_RESULT_TEXT3 = '//span[@class=\'result__suffix\']\n'
 const PRODUCT_TITLE = '//span[@class=\'hlFld-Title\']'
 
